@@ -1,1 +1,109 @@
+.app {
+  header {
+    margin-bottom: 1rem;
+    img {
+      width: 10rem;
+      overflow: hidden;
+    }
+  }
 
+  .hero {
+    border-radius: 3rem;
+    overflow: hidden;
+    .top {
+      background-image: url("../assets/heroimagemd.png");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 3rem 2rem;
+
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        max-width: 12rem;
+      }
+      .input {
+        position: relative;
+        width: max-content;
+        margin-top: 1rem;
+        input {
+          width: 7rem;
+          padding: 0.3rem 2.5rem 0.3rem 1rem;
+          border-radius: 999px;
+          border: none;
+          outline: none;
+          color: var(--primary);
+        }
+        img {
+          position: absolute;
+          width: 0.9rem;
+          height: 0.9rem;
+          top: 50%;
+          right: 1rem;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+    .bottom {
+      background-color: var(--gray);
+      padding: 1rem 2rem 3rem 2rem;
+      hr {
+        outline: none;
+        border: 3px solid #4d270c;
+        border-radius: 77px;
+        width: 4rem;
+        margin: 0.5rem 0 1rem 0;
+      }
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        .bread {
+          img {
+            min-height: 10rem;
+            border-radius: 1rem;
+          }
+          .name {
+            font-weight: 700;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    @media all and (min-width: 700px) {
+      & {
+        .top {
+          min-height: 500px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          p {
+            max-width: 15rem;
+          }
+          .input {
+            input {
+              width: 15rem;
+            }
+          }
+        }
+        .bottom {
+          .summary {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+      }
+    }
+  }
+}

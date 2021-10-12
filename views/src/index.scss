@@ -1,9 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Poppins:wght@400;700&display=swap");
+:root {
+  --primary: #291507;
+  --gray: #e3e1dc;
+}
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  color: inherit;
   font: inherit;
+  color: inherit;
+  text-decoration: none;
   box-sizing: border-box;
+}
+html {
+  color: var(--primary);
+}
+body {
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: "Mystery Quest", cursive;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media all and (min-width: 700px) {
+  html {
+    font-size: 1.2rem;
+  }
 }
