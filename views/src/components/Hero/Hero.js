@@ -1,4 +1,5 @@
 import search from "../../assets/search.svg";
+import { Link } from "react-router-dom";
 import "./Hero.scss";
 export default function Hero({ summaryBreeds, breedsNumber }) {
   console.log(summaryBreeds);
@@ -20,12 +21,12 @@ export default function Hero({ summaryBreeds, breedsNumber }) {
         </h2>
         <div className="summary">
           {summaryBreeds.map((breed) => (
-            <div className="breed" key={breed.name}>
+            <Link to={`/${breed.id}`} className="breed" key={breed.name}>
               <div className="img">
                 <img src={breed.image.url} alt="" />
               </div>
               <div className="name">{breed.name}</div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

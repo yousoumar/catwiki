@@ -3,10 +3,13 @@ import Blog from "../Blog/Blog";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Hero from "../Hero/Hero";
+import Breed from "../Breed/Breed";
 import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 function App() {
   const [breedsNumber, setBreedsNumber] = useState(0);
   const [summaryBreeds, setSummaryBreeds] = useState([]);
+
   useEffect(() => {
     const fetcher = async () => {
       try {
@@ -24,10 +27,19 @@ function App() {
   }, []);
   return (
     <div className="app">
-      <Header />
-      <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
-      <Blog />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
+            <Blog />
+          </Route>
+          <Route path="/:id">
+            <Breed />
+          </Route>
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
