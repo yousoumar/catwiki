@@ -1,0 +1,19 @@
+footer {
+  background-color: black;
+  border-radius: 42px 42px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 3rem;
+  font-size: 0.8rem;
+  margin-bottom: -1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+
+  a {
+    display: inline;
+    text-transform: none;
+    font-size: inherit;
+  }
+}

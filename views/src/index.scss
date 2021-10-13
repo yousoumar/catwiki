@@ -16,12 +16,6 @@
 html {
   color: var(--primary);
 }
-body {
-  padding: 1rem;
-  font-family: "Poppins", sans-serif;
-  max-width: 1140px;
-  margin: 0 auto;
-}
 
 .logo {
   font-family: "Mystery Quest", cursive;
@@ -34,6 +28,38 @@ img {
   display: block;
 }
 
+h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+hr {
+  outline: none;
+  border: 2px solid #4d270c;
+  border-radius: 77px;
+  width: 4rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+a {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  font-weight: 700;
+  font-size: 0.8rem;
+  .icon {
+    height: 0.9rem;
+    margin-left: 0.5rem;
+    transition: 0.3s ease;
+  }
+  &:hover {
+    .icon {
+      transform: translateX(0.5rem);
+    }
+  }
+}
 @media all and (min-width: 700px) {
   html {
     font-size: 1.2rem;
