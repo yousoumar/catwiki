@@ -15,7 +15,7 @@ export default function Blog() {
         </p>
         <a href="/">
           <span>Reade more</span>{" "}
-          <span class="icon">
+          <span className="icon">
             <img src={arrow} alt="" />
           </span>
         </a>

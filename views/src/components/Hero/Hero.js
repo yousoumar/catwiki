@@ -1,7 +1,7 @@
 import search from "../../assets/search.svg";
-import img2 from "../../assets/image2.png";
 import "./Hero.scss";
-export default function Hero() {
+export default function Hero({ summaryBreeds, breedsNumber }) {
+  console.log(summaryBreeds);
   return (
     <div className="hero">
       <div className="top">
@@ -16,33 +16,17 @@ export default function Hero() {
         <h1>Most Searched Breeds</h1>
         <hr />
         <h2>
-          66+ Breeds For you <br /> to discover
+          {breedsNumber} Breeds For you <br /> to discover
         </h2>
         <div className="summary">
-          <div className="bread">
-            <div className="img">
-              <img src={img2} alt="" />
+          {summaryBreeds.map((breed) => (
+            <div className="breed" key={breed.name}>
+              <div className="img">
+                <img src={breed.image.url} alt="" />
+              </div>
+              <div className="name">{breed.name}</div>
             </div>
-            <div className="name">Bengal</div>
-          </div>
-          <div className="bread">
-            <div className="img">
-              <img src={img2} alt="" />
-            </div>
-            <div className="name">Bengal</div>
-          </div>
-          <div className="bread">
-            <div className="img">
-              <img src={img2} alt="" />
-            </div>
-            <div className="name">Bengal</div>
-          </div>
-          <div className="bread">
-            <div className="img">
-              <img src={img2} alt="" />
-            </div>
-            <div className="name">Bengal</div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
