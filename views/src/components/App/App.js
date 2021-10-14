@@ -34,7 +34,7 @@ function App() {
             <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
             <Blog />
           </Route>
-          <Route path="/:id">
+          <Route path="/breed/:id">
             <Breed />
           </Route>
         </Switch>

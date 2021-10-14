@@ -14,14 +14,13 @@ export default function Hero({ summaryBreeds, breedsNumber }) {
         </div>
       </div>
       <div className="bottom">
-        <h1>Most Searched Breeds</h1>
         <hr />
-        <h2>
+        <h1>
           {breedsNumber} Breeds For you <br /> to discover
-        </h2>
+        </h1>
         <div className="summary">
           {summaryBreeds.map((breed) => (
-            <Link to={`/${breed.id}`} className="breed" key={breed.name}>
+            <Link to={`/breed/${breed.id}`} className="breed" key={breed.name}>
               <div className="img">
                 <img src={breed.image.url} alt="" />
               </div>

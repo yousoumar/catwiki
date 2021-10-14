@@ -1,7 +1,7 @@
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-
+import path from "path";
 dotenv.config();
 const app = express();
 
@@ -34,6 +34,12 @@ app.get("/cats/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+const __dirname = path.resolve();
+app.get("/*", (req, res) => {
+  console.log(path.__dirname);
+  res.sendFile(path.join(__dirname, "./views/build/index.html"));
 });
 
 const port = process.env.PORT;
