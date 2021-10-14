@@ -9,9 +9,12 @@ app.use(express.static("./views/build"));
 
 app.get("/cats/", async (req, res) => {
   try {
-    const response = await fetch(
-      `https://api.thecatapi.com/v1/breeds/?api_key=${process.env.APIKEY}`
-    );
+    const response = await fetch(`https://api.thecatapi.com/v1/breeds/`, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": process.env.APIKEY,
+      },
+    });
 
     const data = await response.json();
     res.json(data);
@@ -21,16 +24,22 @@ app.get("/cats/", async (req, res) => {
 });
 app.get("/cats/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(id);
+
   try {
     const response = await fetch(
-      `https://api.thecatapi.com/v1/breeds/?api_key=${process.env.APIKEY}`
+      `https://api.thecatapi.com/v1/images/search?breed_ids=${id}&limit=9`,
+      {
+        method: "GET",
+        headers: {
+          "X-Api-Key": process.env.APIKEY,
+        },
+      }
     );
 
     const data = await response.json();
-    const breed = data.find((breed) => breed.id === id);
-    console.log(breed);
-    res.json(breed);
+    const images = [];
+    data.forEach((item, index) => (images[index] = item.url));
+    res.json({ images: images, breed: data[0].breeds[0] });
   } catch (error) {
     console.log(error);
   }
@@ -38,7 +47,6 @@ app.get("/cats/:id", async (req, res) => {
 
 const __dirname = path.resolve();
 app.get("/*", (req, res) => {
-  console.log(path.__dirname);
   res.sendFile(path.join(__dirname, "./views/build/index.html"));
 });
 

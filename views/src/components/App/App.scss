@@ -1,6 +1,9 @@
 .app {
   padding: 1rem;
   font-family: "Poppins", sans-serif;
-  max-width: 1140px;
+  max-width: 1300px;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }

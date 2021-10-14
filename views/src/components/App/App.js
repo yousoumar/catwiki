@@ -29,15 +29,18 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
-            <Blog />
-          </Route>
-          <Route path="/breed/:id">
-            <Breed />
-          </Route>
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
+              <Blog />
+            </Route>
+            <Route path="/breed/:id">
+              <Breed />
+            </Route>
+          </Switch>
+        </main>
+
         <Footer />
       </BrowserRouter>
     </div>

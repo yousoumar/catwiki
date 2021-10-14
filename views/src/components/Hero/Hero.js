@@ -1,12 +1,15 @@
 import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
+import logo from "../../assets/white-logo.svg";
 import "./Hero.scss";
 export default function Hero({ summaryBreeds, breedsNumber }) {
   console.log(summaryBreeds);
   return (
     <div className="hero">
       <div className="top">
-        <div className="logo">CatWiki</div>
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
         <p>Get to know more about your cat breed</p>
         <div className="input">
           <input type="text" placeholder="Search" />
