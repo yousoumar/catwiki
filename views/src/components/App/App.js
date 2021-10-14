@@ -6,6 +6,7 @@ import Hero from "../Hero/Hero";
 import Breed from "../Breed/Breed";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Loader from "../Loader/Loader";
 function App() {
   const [breedsNumber, setBreedsNumber] = useState(0);
   const [summaryBreeds, setSummaryBreeds] = useState([]);
@@ -27,22 +28,29 @@ function App() {
   }, []);
   return (
     <div className="app">
-      <BrowserRouter>
-        <Header />
-        <main>
-          <Switch>
-            <Route exact path="/">
-              <Hero summaryBreeds={summaryBreeds} breedsNumber={breedsNumber} />
-              <Blog />
-            </Route>
-            <Route path="/breed/:id">
-              <Breed />
-            </Route>
-          </Switch>
-        </main>
+      {summaryBreeds.length <= 0 ? (
+        <Loader />
+      ) : (
+        <BrowserRouter>
+          <Header />
+          <main>
+            <Switch>
+              <Route exact path="/">
+                <Hero
+                  summaryBreeds={summaryBreeds}
+                  breedsNumber={breedsNumber}
+                />
+                <Blog />
+              </Route>
+              <Route path="/breed/:id">
+                <Breed />
+              </Route>
+            </Switch>
+          </main>
 
-        <Footer />
-      </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+      )}
     </div>
   );
 }

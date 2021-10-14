@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 import "./Breed.scss";
 export default function Breed() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ export default function Breed() {
   return (
     <div className="breed">
       {!breed ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <>
           <div className="left">
