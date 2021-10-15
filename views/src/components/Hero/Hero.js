@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/white-logo.svg";
 import "./Hero.scss";
 export default function Hero({ summaryBreeds, breedsNumber }) {
-  console.log(summaryBreeds);
   return (
     <div className="hero">
       <div className="top">

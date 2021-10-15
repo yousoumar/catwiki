@@ -2,17 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import "./Breed.scss";
-export default function Breed() {
+export default function Breed({ allBreeds }) {
   const { id } = useParams();
-  const [breed, setBreed] = useState(null);
+  const breed = allBreeds.find((breed) => breed.id === id);
   const [images, setImages] = useState(null);
-  console.log(breed);
   useEffect(() => {
     fetch("/cats/" + id)
       .then((res) => res.json())
       .then((data) => {
-        setImages(data.images);
-        setBreed(data.breed);
+        setImages(data);
       });
   }, [id]);
 
@@ -30,15 +28,15 @@ export default function Breed() {
   };
   return (
     <div className="breed">
-      {!breed ? (
+      {!images ? (
         <Loader />
       ) : (
         <>
-          <div className="left">
-            <img src={images[0]} alt="" />
+          <div className="left img">
+            <img src={breed.image.url} alt="" />
           </div>
           <div className="right">
-            <div className="img">
+            <div>
               <h1>{breed.name}</h1>
             </div>
             <div>{breed.description}</div>
@@ -90,7 +88,7 @@ export default function Breed() {
           <div className="bottom">
             <h1>Other photos</h1>
             <div className="content">
-              {images.slice(1).map((img) => (
+              {images.map((img) => (
                 <div className="img" key={img.url}>
                   {" "}
                   <img src={img} alt="" />

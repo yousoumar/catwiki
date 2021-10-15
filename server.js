@@ -1,49 +1,16 @@
 import express from "express";
-import fetch from "node-fetch";
 import dotenv from "dotenv";
 import path from "path";
+import morgan from "morgan";
+import { router } from "./routes/api.js";
+
 dotenv.config();
 const app = express();
 
 app.use(express.static("./views/build"));
+app.use(morgan("dev"));
 
-app.get("/cats/", async (req, res) => {
-  try {
-    const response = await fetch(`https://api.thecatapi.com/v1/breeds/`, {
-      method: "GET",
-      headers: {
-        "X-Api-Key": process.env.APIKEY,
-      },
-    });
-
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
-app.get("/cats/:id", async (req, res) => {
-  const id = req.params.id;
-
-  try {
-    const response = await fetch(
-      `https://api.thecatapi.com/v1/images/search?breed_ids=${id}&limit=9`,
-      {
-        method: "GET",
-        headers: {
-          "X-Api-Key": process.env.APIKEY,
-        },
-      }
-    );
-
-    const data = await response.json();
-    const images = [];
-    data.forEach((item, index) => (images[index] = item.url));
-    res.json({ images: images, breed: data[0].breeds[0] });
-  } catch (error) {
-    console.log(error);
-  }
-});
+app.use("/cats/", router);
 
 const __dirname = path.resolve();
 app.get("/*", (req, res) => {

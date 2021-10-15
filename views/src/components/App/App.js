@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loader from "../Loader/Loader";
 function App() {
   const [breedsNumber, setBreedsNumber] = useState(0);
+  const [allBreeds, setallBreeds] = useState([]);
   const [summaryBreeds, setSummaryBreeds] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
         const res = await fetch("/cats/");
         const data = await res.json();
         setBreedsNumber(data.length);
+        setallBreeds(data);
         setSummaryBreeds(data.slice(0, 4));
 
         console.log(data);
@@ -43,7 +45,7 @@ function App() {
                 <Blog />
               </Route>
               <Route path="/breed/:id">
-                <Breed />
+                <Breed allBreeds={allBreeds} />
               </Route>
             </Switch>
           </main>
