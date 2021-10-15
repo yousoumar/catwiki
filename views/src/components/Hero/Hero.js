@@ -22,7 +22,6 @@ export default function Hero({ summaryBreeds, breedsNumber, allBreeds }) {
             focusable="false"
             data-prefix="fas"
             data-icon="search"
-            class="svg-inline--fa fa-search fa-w-16"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"

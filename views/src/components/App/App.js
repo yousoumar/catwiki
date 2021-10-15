@@ -18,8 +18,6 @@ function App() {
         const data = await res.json();
         setallBreeds(data);
         setSummaryBreeds(data.slice(0, 4));
-
-        console.log(data);
       } catch (error) {
         console.log(error);
       }

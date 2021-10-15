@@ -28,7 +28,9 @@ export default function SearchBox({ allBreeds, setShowSearchBox }) {
         <div className="links">
           {matchedBreeds.length >= 1 ? (
             matchedBreeds.map((breed) => (
-              <Link to={"/breed/" + breed.id}>{breed.name}</Link>
+              <Link to={"/breed/" + breed.id} key={breed.name}>
+                {breed.name}
+              </Link>
             ))
           ) : (
             <p>No one matches your search</p>

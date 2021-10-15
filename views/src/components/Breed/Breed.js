@@ -20,8 +20,8 @@ export default function Breed({ allBreeds }) {
       <div>
         {array.map((item) => {
           if (item <= n) {
-            return <span className="plein"></span>;
-          } else return <span></span>;
+            return <span className="plein" key={item}></span>;
+          } else return <span key={item}></span>;
         })}
       </div>
     );
@@ -36,9 +36,8 @@ export default function Breed({ allBreeds }) {
             <img src={breed.image.url} alt="" />
           </div>
           <div className="right">
-            <div>
-              <h1>{breed.name}</h1>
-            </div>
+            <h1>{breed.name}</h1>
+
             <div>{breed.description}</div>
             <p>
               <strong>Temperament : </strong>
