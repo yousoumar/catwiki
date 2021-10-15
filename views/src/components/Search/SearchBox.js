@@ -2,12 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SearchBox.scss";
 export default function SearchBox({ allBreeds, setShowSearchBox }) {
-  const [inputValue, setInputValue] = useState("");
   const [matchedBreeds, setMatchedBreeds] = useState([]);
   const handleInput = (e) => {
     const value = e.currentTarget.value.trim();
     if (value.length >= 1) {
-      setInputValue(value);
       setMatchedBreeds(allBreeds.filter((breed) => breed.name.includes(value)));
     } else {
       setMatchedBreeds([]);
