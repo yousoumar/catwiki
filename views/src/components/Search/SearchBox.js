@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import "./SearchBox.scss";
 export default function SearchBox({ allBreeds, setShowSearchBox }) {
   const [inputValue, setInputValue] = useState("");
+  const [matchedBreeds, setMatchedBreeds] = useState([]);
+  const handleInput = (e) => {
+    const value = e.currentTarget.value.trim();
+    if (value.length >= 1) {
+      setInputValue(value);
+      setMatchedBreeds(allBreeds.filter((breed) => breed.name.includes(value)));
+    } else {
+      setMatchedBreeds([]);
+    }
+  };
+
   return (
     <div className="serach-box">
       <div className="content">
@@ -10,17 +21,20 @@ export default function SearchBox({ allBreeds, setShowSearchBox }) {
           X
         </button>
         <input
-          type="search"
+          type="text"
           placeholder="Enter breed name"
-          onInput={(e) => setInputValue(e.currentTarget.value)}
+          onInput={handleInput}
         />
+        <hr />
+        <h1>Breed that match your search</h1>
         <div className="links">
-          {inputValue.trim().length > 1 &&
-            allBreeds
-              .filter((breed) => breed.name.includes(inputValue))
-              .map((breed) => (
-                <Link to={"/breed/" + breed.id}>{breed.name}</Link>
-              ))}
+          {matchedBreeds.length >= 1 ? (
+            matchedBreeds.map((breed) => (
+              <Link to={"/breed/" + breed.id}>{breed.name}</Link>
+            ))
+          ) : (
+            <p>No one matches your search</p>
+          )}
         </div>
       </div>
     </div>
