@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loader from "../Loader/Loader";
 function App() {
-  const [breedsNumber, setBreedsNumber] = useState(0);
   const [allBreeds, setallBreeds] = useState([]);
   const [summaryBreeds, setSummaryBreeds] = useState([]);
 
@@ -17,7 +16,6 @@ function App() {
       try {
         const res = await fetch("/cats/");
         const data = await res.json();
-        setBreedsNumber(data.length);
         setallBreeds(data);
         setSummaryBreeds(data.slice(0, 4));
 
@@ -38,10 +36,7 @@ function App() {
           <main>
             <Switch>
               <Route exact path="/">
-                <Hero
-                  summaryBreeds={summaryBreeds}
-                  breedsNumber={breedsNumber}
-                />
+                <Hero summaryBreeds={summaryBreeds} allBreeds={allBreeds} />
                 <Blog />
               </Route>
               <Route path="/breed/:id">
