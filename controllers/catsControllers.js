@@ -7,7 +7,8 @@ const getAllBreeds = async (req, res) => {
         "X-Api-Key": process.env.APIKEY,
       },
     });
-    const data = await response.json();
+    let data = await response.json();
+    data = data.filter((breed) => breed.image && breed.image.url);
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -30,7 +31,11 @@ const getImageById = async (req, res) => {
 
     const data = await response.json();
     const images = [];
-    data.forEach((item, index) => (images[index] = item.url));
+    data.forEach((item, index) => {
+      if (item.url) {
+        images[index] = item.url;
+      }
+    });
     res.json(images);
   } catch (error) {
     console.log(error);

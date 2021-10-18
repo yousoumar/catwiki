@@ -6,24 +6,7 @@
   p {
     margin-bottom: 2rem;
   }
-  a {
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    width: max-content;
-    font-weight: 700;
-    font-size: 0.8rem;
-    .icon {
-      height: 0.9rem;
-      margin-left: 0.5rem;
-      transition: 0.3s ease;
-    }
-    &:hover {
-      .icon {
-        transform: translateX(0.5rem);
-      }
-    }
-  }
+
   .right {
     display: grid;
     gap: 1rem;

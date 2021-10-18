@@ -1,4 +1,4 @@
-import { getAllBreeds, getImageById } from "../controllers/api.js";
+import { getAllBreeds, getImageById } from "../controllers/catsControllers.js";
 import express from "express";
 
 const router = express.Router();

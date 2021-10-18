@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import morgan from "morgan";
-import { router } from "./routes/api.js";
+import { router } from "./routes/catsRouter.js";
 
 dotenv.config();
 const app = express();

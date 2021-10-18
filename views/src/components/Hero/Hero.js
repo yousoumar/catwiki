@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/white-logo.svg";
 import Search from "../Search/SearchBox";
+import arrow from "../../assets/arrow.svg";
 import "./Hero.scss";
 export default function Hero({ summaryBreeds, breedsNumber, allBreeds }) {
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -48,6 +49,19 @@ export default function Hero({ summaryBreeds, breedsNumber, allBreeds }) {
             </Link>
           ))}
         </div>
+        <a
+          href="/"
+          className="see-more"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowSearchBox(true);
+          }}
+        >
+          <span>See more</span>{" "}
+          <span className="icon">
+            <img src={arrow} alt="" />
+          </span>
+        </a>
       </div>
     </div>
   );

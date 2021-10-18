@@ -16,7 +16,12 @@ function App() {
       try {
         const res = await fetch("/cats/");
         const data = await res.json();
+        console.log(data.length);
         setallBreeds(data);
+        data.sort(
+          (item1, item2) =>
+            item1.grooming * Math.random() < item2.adaptability * Math.random()
+        );
         setSummaryBreeds(data.slice(0, 4));
       } catch (error) {
         console.log(error);
