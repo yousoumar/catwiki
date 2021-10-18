@@ -1,7 +1,6 @@
 import img1 from "../../assets/image1.png";
 import img2 from "../../assets/image2.png";
 import img3 from "../../assets/image3.png";
-import arrow from "../../assets/arrow.svg";
 import "./Blog.scss";
 export default function Blog() {
   return (
@@ -13,12 +12,6 @@ export default function Blog() {
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety leves
         </p>
-        <a href="/" className="see-more">
-          <span>Reade more</span>{" "}
-          <span className="icon">
-            <img src={arrow} alt="" />
-          </span>
-        </a>
       </div>
       <div className="right">
         <div className="img">
