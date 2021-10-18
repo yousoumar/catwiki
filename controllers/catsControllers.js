@@ -7,11 +7,19 @@ const getAllBreeds = async (req, res) => {
         "X-Api-Key": process.env.APIKEY,
       },
     });
-    let data = await response.json();
-    data = data.filter((breed) => breed.image && breed.image.url);
-    res.json(data);
+
+    if (response.ok) {
+      let data = await response.json();
+      data = data.filter((breed) => breed.image && breed.image.url);
+      res.json(data);
+    } else {
+      throw new Error("Bad response from The cat Api");
+    }
   } catch (error) {
     console.log(error);
+    res.status(500).send({
+      message: "Something went wrong with The Cat Api. Please come back later.",
+    });
   }
 };
 
@@ -36,9 +44,22 @@ const getImageById = async (req, res) => {
         images[index] = item.url;
       }
     });
+    if (images.length <= 0) {
+      throw new Error("not found");
+    }
     res.json(images);
   } catch (error) {
     console.log(error);
+    if (error.message === "not found") {
+      res.status(400).send({
+        message:
+          "The breed you are looking for may not exist in our data base.",
+      });
+    } else {
+      res
+        .status(500)
+        .send({ message: "Something went wrong with The Cat Api." });
+    }
   }
 };
 export { getAllBreeds, getImageById };

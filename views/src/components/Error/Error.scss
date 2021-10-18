@@ -2,12 +2,25 @@
   margin: auto;
   height: 100%;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  img {
+    border-radius: 24px;
+  }
+
   h1 {
     margin-bottom: 1rem;
   }
   .see-more {
     margin-top: 2rem;
+  }
+
+  @media all and (min-width: 750px) {
+    & {
+      flex-direction: row;
+    }
   }
 }
