@@ -7,6 +7,7 @@ import Breed from "../Breed/Breed";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
 function App() {
   const [allBreeds, setallBreeds] = useState([]);
   const [summaryBreeds, setSummaryBreeds] = useState([]);
@@ -16,7 +17,6 @@ function App() {
       try {
         const res = await fetch("/cats/");
         const data = await res.json();
-        console.log(data.length);
         setallBreeds(data);
         data.sort(
           (item1, item2) =>
@@ -44,6 +44,9 @@ function App() {
               </Route>
               <Route path="/breed/:id">
                 <Breed allBreeds={allBreeds} />
+              </Route>
+              <Route path="/*">
+                <Error error={404} />
               </Route>
             </Switch>
           </main>
