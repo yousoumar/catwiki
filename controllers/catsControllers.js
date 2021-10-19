@@ -17,7 +17,7 @@ const getAllBreeds = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).send({
+    res.status(500).json({
       message: "Something went wrong with The Cat Api. Please come back later.",
     });
   }
@@ -51,14 +51,14 @@ const getImageById = async (req, res) => {
   } catch (error) {
     console.log(error);
     if (error.message === "not found") {
-      res.status(400).send({
+      res.status(400).json({
         message:
           "The breed you are looking for may not exist in our data base.",
       });
     } else {
       res
         .status(500)
-        .send({ message: "Something went wrong with The Cat Api." });
+        .json({ message: "Something went wrong with The Cat Api." });
     }
   }
 };
