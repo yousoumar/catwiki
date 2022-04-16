@@ -10,4 +10,4 @@ Beyond a good UI/UX (instantaneous search, 404 page...), the challenge was to al
 
 The project is hosted by `Heroku`, you can test it by clicking on the link above, in the `Github` about section.
 
-<img src = "views/public/screenshot.png"/>
+<img src = "client/public/screenshot.png"/>

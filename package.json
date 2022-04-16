@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "heroku-prebuild": "cd views && npm install && npm run build && cd .."
+    "heroku-prebuild": "cd client && npm install && npm run build && cd .."
   },
   "dependencies": {
     "dotenv": "^10.0.0",
