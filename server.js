@@ -1,16 +1,13 @@
-import dotenv from "dotenv";
 import express from "express";
-import morgan from "morgan";
+
 import path from "path";
 import { router } from "./routes/catsRoutes.js";
 
-dotenv.config();
 const app = express();
 
 app.use(express.static("./client/build"));
-app.use(morgan("dev"));
 
-app.use("/cats/", router);
+app.use("/api/cats", router);
 
 const __dirname = path.resolve();
 app.get("/*", (req, res) => {
@@ -19,5 +16,5 @@ app.get("/*", (req, res) => {
 
 const port = process.env.PORT;
 app.listen(port, () => {
-  console.log("server running on port " + port);
+  console.log("Server running on http://localhost:" + port);
 });

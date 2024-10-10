@@ -11,7 +11,7 @@ export default function Breed({ allBreeds }) {
   useEffect(() => {
     const fetcher = async () => {
       try {
-        const res = await fetch("/cats/" + id);
+        const res = await fetch("/api/cats/" + id);
         const data = await res.json();
         if (res.ok) {
           setImages(data);
@@ -19,7 +19,7 @@ export default function Breed({ allBreeds }) {
           setApiError(data.message);
         }
       } catch (error) {
-        console.log(error);
+        setApiError("Something went wrong with The Cat Api. Please come back later.");
       }
     };
     fetcher();
@@ -29,10 +29,10 @@ export default function Breed({ allBreeds }) {
     const array = [1, 2, 3, 4, 5];
     return (
       <div>
-        {array.map((item) => {
+        {array.map((item, index) => {
           if (item <= n) {
-            return <span className="plein" key={item}></span>;
-          } else return <span key={item}></span>;
+            return <span className="plein" key={index}></span>;
+          } else return <span key={index}></span>;
         })}
       </div>
     );
@@ -53,57 +53,57 @@ export default function Breed({ allBreeds }) {
               <div className="right">
                 <h1>{breed.name}</h1>
 
-                <div>{breed.description}</div>
-                <p>
+                <p>{breed.description}</p>
+                <div>
                   <strong>Temperament : </strong>
                   {breed.temperament}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Origin : </strong>
                   {breed.origin}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Life Span : </strong>
                   {breed.life_span + " years"}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Adaptability : </strong>
                   {displayGraphic(breed.adaptability)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Affection level : </strong>
                   {displayGraphic(breed.affection_level)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Child friendly : </strong>
                   {displayGraphic(breed.child_friendly)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Grooming : </strong>
                   {displayGraphic(breed.grooming)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Intelligence : </strong>
                   {displayGraphic(breed.intelligence)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Health issues : </strong>
                   {displayGraphic(breed.health_issues)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Social needs : </strong>
                   {displayGraphic(breed.social_needs)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Stranger friendly : </strong>
                   {displayGraphic(breed.stranger_friendly)}
-                </p>
+                </div>
               </div>
               <div className="bottom">
                 <h1>Other photos</h1>
                 <div className="content">
-                  {images.map((img) => (
-                    <div className="img" key={img.url}>
+                  {images.map((img, index) => (
+                    <div className="img" key={index}>
                       {" "}
                       <img src={img} alt="" />
                     </div>

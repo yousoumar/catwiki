@@ -21,7 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # others
-package-lock.json
-.env
 yarn.lock
+.env
+
 

@@ -4,7 +4,7 @@ import logo from "../../assets/white-logo.svg";
 import Search from "../Search/SearchBox";
 import arrow from "../../assets/arrow.svg";
 import "./Hero.scss";
-export default function Hero({ summaryBreeds, breedsNumber, allBreeds }) {
+export default function Hero({ summaryBreeds, allBreeds }) {
   const [showSearchBox, setShowSearchBox] = useState(false);
   return (
     <div className="hero">

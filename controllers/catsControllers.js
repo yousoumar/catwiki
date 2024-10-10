@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 const getAllBreeds = async (req, res) => {
   try {
     const response = await fetch(`https://api.thecatapi.com/v1/breeds/`, {
@@ -52,13 +51,10 @@ const getImageById = async (req, res) => {
     console.log(error);
     if (error.message === "not found") {
       res.status(400).json({
-        message:
-          "The breed you are looking for may not exist in our data base.",
+        message: "The breed you are looking for may not exist in our data base.",
       });
     } else {
-      res
-        .status(500)
-        .json({ message: "Something went wrong with The Cat Api." });
+      res.status(500).json({ message: "Something went wrong with The Cat Api." });
     }
   }
 };
